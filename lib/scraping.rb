@@ -7,7 +7,7 @@ charset = nil
 (660..662).each do |num|
   regexp = /rid=\d{3}/
   url_scraping = url.gsub(regexp, "rid=#{num}")
-  
+
   html = open(url_scraping) do |f|
     charset = f.charset
     f.read
@@ -16,6 +16,6 @@ charset = nil
   doc = Nokogiri::HTML.parse(html, nil, charset)
 
   doc.css('td[class*="record-value-"]' ).each do |tr|
-    p tr.inner_text
+    p tr.inner_text.gsub(/(\s)/,"").gsub(/([\t| |　]+)/," ")
   end
 end
