@@ -1,16 +1,10 @@
 require 'open-uri'
 require 'nokogiri'
 
-url = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&qid=all&vid=24&rid=653&Head=&hid=&sid=n&rev=0&ssid=1-2584-30568-g226'
+url = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&qid=all&vid=24&rid=661&Head=&hid=&sid=n&rev=0&ssid=1-2448-4121-g196"
 
-charset = nil
-html = open(url) do |f|
-  charset = f.charset
-  f.read
-end
-
-doc = Nokogiri::HTML.parse(html, nil, charset)
-
-doc.css('td[class*="record-value-"]' ).each do |tr|
-  p tr.inner_text
+(660..662).each do |num|
+  regexp = /rid=\d{3}/
+  url_display = url.gsub(regexp, 'rid=num') # ここのnumの使い方を教えてください
+  p url_display
 end
