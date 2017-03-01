@@ -16,6 +16,9 @@ charset = nil
   doc = Nokogiri::HTML.parse(html, nil, charset)
 
   doc.css('td[class*="record-value-"]' ).each do |tr|
-    p tr.inner_text.gsub(/(\s)/,"").gsub(/([\t| |　]+)/," ")
+    p tr.inner_text.gsub(/(\s)/,"").gsub(/([\t| |　]+)/,"").gsub(/[:spase:]/,"")
   end
+  # doc.css('td[class*="record-value-"]' ).css('a').each do |anchor|
+  #   p anchor[:href]
+  # end
 end
