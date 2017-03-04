@@ -1,3 +1,5 @@
+# coding: utf-8
+
 require 'open-uri'
 require 'nokogiri'
 
@@ -16,6 +18,6 @@ charset = nil
   doc = Nokogiri::HTML.parse(html, nil, charset)
 
   doc.css('td[class*="record-value-"]' ).each do |tr|
-    p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[:spase:]/,"")
+    p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[:spase:]|[\u00A0]/,"")
   end
 end
