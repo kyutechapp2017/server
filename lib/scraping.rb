@@ -3,21 +3,26 @@
 require 'open-uri'
 require 'nokogiri'
 
-url = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&qid=all&vid=24&rid=661&Head=&hid=&sid=n&rev=0&ssid=1-2448-4121-g196"
+url = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&rid=661"
 charset = nil
 
-(660..662).each do |num|
-  regexp = /rid=\d{3}/
-  url_scraping = url.gsub(regexp, "rid=#{num}")
+[357,391,361,363,393,364,373,367,379,372,368,370].each do |did|
+  regexp = /did=\d{3}/
+  url_temp = url.gsub(regexp, "did=#{did}")
 
-  html = open(url_scraping) do |f|
-    charset = f.charset
-    f.read
-  end
+  (150..152).each do |rid|
+    regexp = /rid=\d{3}/
+    url_scraping = url_temp.gsub(regexp, "rid=#{rid}")
 
-  doc = Nokogiri::HTML.parse(html, nil, charset)
+    html = open(url_scraping) do |f|
+      charset = f.charset
+      f.read
+    end
 
-  doc.css('td[class*="record-value-"]' ).each do |tr|
-    p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    doc.css('td[class*="record-value-"]' ).each do |tr|
+      p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
+    end
   end
 end
