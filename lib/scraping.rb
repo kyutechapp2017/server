@@ -18,6 +18,6 @@ charset = nil
   doc = Nokogiri::HTML.parse(html, nil, charset)
 
   doc.css('td[class*="record-value-"]' ).each do |tr|
-    p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[:spase:]|[\u00A0]/,"")
+    p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
   end
 end
