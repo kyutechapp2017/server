@@ -3,14 +3,14 @@
 require 'open-uri'
 require 'nokogiri'
 
-url = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&rid=661"
+url_scraping = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&rid=661"
 charset = nil
 
 [357,391,361,363,393,364,373,367,379,372,368,370].each do |did|
   regexp = /did=\d{3}/
-  url_temp = url.gsub(regexp, "did=#{did}")
+  url_temp = url_scraping.gsub(regexp, "did=#{did}")
 
-  (150..152).each do |rid|
+  (660..662).each do |rid|
     regexp = /rid=\d{3}/
     url_scraping = url_temp.gsub(regexp, "rid=#{rid}")
 
@@ -21,8 +21,10 @@ charset = nil
 
     doc = Nokogiri::HTML.parse(html, nil, charset)
 
+    regexp = /<(a href=\")|(">.*)/
     doc.css('td[class*="record-value-"]' ).each do |tr|
       p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
+      p tr.css('a').to_s.gsub(regexp, "")
     end
   end
 end
