@@ -22,9 +22,12 @@ charset = nil
     doc = Nokogiri::HTML.parse(html, nil, charset)
 
     regexp = /<(a href=\")|(">.*)/
+    p url_scraping
     doc.css('td[class*="record-value-"]' ).each do |tr|
       p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
-      p tr.css('a').to_s.gsub(regexp, "")
+      if (tr.css('a').to_s != "") && (tr.css('a').to_s.gsub(regexp, "") != /mailto+/) then
+        p tr.css('a').to_s.gsub(regexp, "")
+      end
     end
   end
 end
