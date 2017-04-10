@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  title: MyString
+  date: 2017-04-10 19:14:26
+  content: MyText
+  note: MyString
+  attachment_1: MyString
+  attachment_1_url: MyText
+  attachment_2: MyString
+  attachment_2_url: MyText
+  attachment_3: MyString
+  attachment_3_url: MyText
+  attachment_4: MyString
+  attachment_4_url: MyText
+  attachment_5: MyString
+  attachment_5_url: MyText
+
+two:
+  url: MyText
+  title: MyString
+  date: 2017-04-10 19:14:26
+  content: MyText
+  note: MyString
+  attachment_1: MyString
+  attachment_1_url: MyText
+  attachment_2: MyString
+  attachment_2_url: MyText
+  attachment_3: MyString
+  attachment_3_url: MyText
+  attachment_4: MyString
+  attachment_4_url: MyText
+  attachment_5: MyString
+  attachment_5_url: MyText

@@ -1,0 +1,2 @@
+class IizukaLecture < ApplicationRecord
+end

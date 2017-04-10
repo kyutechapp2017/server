@@ -1,0 +1,2 @@
+class IizukaScholarship < ApplicationRecord
+end

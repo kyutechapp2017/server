@@ -1,0 +1,2 @@
+class IizukaStudyingAbroad < ApplicationRecord
+end

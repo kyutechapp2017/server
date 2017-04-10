@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  board_id: 
+  date: 2017-04-10 19:15:31
+  date: 2017-04-10 19:15:31
+  place: MyText
+  content: MyText
+  note: MyText
+  inquiry: MyText
+
+two:
+  url: MyText
+  board_id: 
+  date: 2017-04-10 19:15:31
+  date: 2017-04-10 19:15:31
+  place: MyText
+  content: MyText
+  note: MyText
+  inquiry: MyText

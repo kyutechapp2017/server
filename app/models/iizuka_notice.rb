@@ -1,0 +1,2 @@
+class IizukaNotice < ApplicationRecord
+end

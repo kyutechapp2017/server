@@ -1,0 +1,2 @@
+class IizukaOther < ApplicationRecord
+end

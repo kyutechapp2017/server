@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  board_id: 
+  title: MyString
+  subject: MyString
+  date: 2017-04-10 19:13:33
+  period: MyString
+  responsibility: MyString
+  place_or_before: MyString
+  after: MyString
+  content: MyText
+  department: MyString
+  grade: MyString
+  note: MyString
+  attachment_1: MyString
+  attachment_1_url: MyText
+  attachment_2: MyString
+  attachment_2_url: MyText
+  attachment_3: MyString
+  attachment_3_url: MyText
+  attachment_4: MyString
+  attachment_4_url: MyText
+  attachment_5: MyString
+  attachment_5_url: MyText
+
+two:
+  url: MyText
+  board_id: 
+  title: MyString
+  subject: MyString
+  date: 2017-04-10 19:13:33
+  period: MyString
+  responsibility: MyString
+  place_or_before: MyString
+  after: MyString
+  content: MyText
+  department: MyString
+  grade: MyString
+  note: MyString
+  attachment_1: MyString
+  attachment_1_url: MyText
+  attachment_2: MyString
+  attachment_2_url: MyText
+  attachment_3: MyString
+  attachment_3_url: MyText
+  attachment_4: MyString
+  attachment_4_url: MyText
+  attachment_5: MyString
+  attachment_5_url: MyText
