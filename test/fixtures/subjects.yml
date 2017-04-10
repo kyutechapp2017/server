@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campus_id: 
+  url: MyText
+  year: 1
+  name: MyString
+  code: 1
+  teacher: MyString
+  department: MyText
+  classification: MyString
+  num_of_unit: 
+  grade: MyString
+  term: MyString
+  number: MyString
+  place: MyString
+  update: 2017-04-10 19:20:59
+  outline: MyText
+  placement: MyText
+  item: MyText
+  procedure: MyText
+  goal: MyText
+  criteria: MyText
+  preparation: MyText
+  keyword: MyText
+  textbook: MyText
+  reference: MyText
+  note: MyText
+  email: MyText
+
+two:
+  campus_id: 
+  url: MyText
+  year: 1
+  name: MyString
+  code: 1
+  teacher: MyString
+  department: MyText
+  classification: MyString
+  num_of_unit: 
+  grade: MyString
+  term: MyString
+  number: MyString
+  place: MyString
+  update: 2017-04-10 19:20:59
+  outline: MyText
+  placement: MyText
+  item: MyText
+  procedure: MyText
+  goal: MyText
+  criteria: MyText
+  preparation: MyText
+  keyword: MyText
+  textbook: MyText
+  reference: MyText
+  note: MyText
+  email: MyText
