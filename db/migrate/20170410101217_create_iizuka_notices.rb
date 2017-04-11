@@ -23,5 +23,6 @@ class CreateIizukaNotices < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_notices, :date
+    add_index :iizuka_notices, :url, unique: true
   end
 end

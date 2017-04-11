@@ -22,5 +22,6 @@ class CreateIizukaOthers < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_others, :date
+    add_index :iizuka_others, :url, unique: true
   end
 end

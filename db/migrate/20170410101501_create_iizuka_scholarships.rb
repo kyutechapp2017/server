@@ -15,5 +15,6 @@ class CreateIizukaScholarships < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_scholarships, :date
+    add_index :iizuka_scholarships, :url, unique: true
   end
 end

@@ -4,7 +4,6 @@ class CreateIizukaHomepages < ActiveRecord::Migration[5.0]
       t.text :url
       t.unsigned_integer :board_id
       t.datetime :date
-      t.datetime :date
       t.text :place
       t.text :content
       t.text :note
@@ -12,7 +11,6 @@ class CreateIizukaHomepages < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :iizuka_homepages, :date
     add_index :iizuka_homepages, :date
   end
 end

@@ -13,5 +13,6 @@ class CreateIizukaCalls < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_calls, :date
+    add_index :iizuka_calls, :url, unique: true
   end
 end
