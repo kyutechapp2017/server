@@ -1,7 +1,7 @@
 class CreateIizukaNotices < ActiveRecord::Migration[5.0]
   def change
     create_table :iizuka_notices do |t|
-      t.text :url
+      t.text :url, :null => false
       t.string :title
       t.datetime :date
       t.string :period

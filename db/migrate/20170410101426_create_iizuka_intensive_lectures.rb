@@ -1,7 +1,7 @@
 class CreateIizukaIntensiveLectures < ActiveRecord::Migration[5.0]
   def change
     create_table :iizuka_intensive_lectures do |t|
-      t.text :url
+      t.text :url, :null => false
       t.string :title
       t.datetime :date
       t.text :content

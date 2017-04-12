@@ -1,8 +1,8 @@
 class CreateIizukaLectures < ActiveRecord::Migration[5.0]
   def change
     create_table :iizuka_lectures do |t|
-      t.text :url
-      t.unsigned_integer :board_id
+      t.text :url, :null => false
+      t.unsigned_integer :board_id, :null => false
       t.string :title
       t.string :subject
       t.datetime :date
