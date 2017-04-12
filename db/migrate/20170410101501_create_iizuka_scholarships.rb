@@ -1,7 +1,7 @@
 class CreateIizukaScholarships < ActiveRecord::Migration[5.0]
   def change
     create_table :iizuka_scholarships do |t|
-      t.text :url, :null => false
+      t.text :url, null: false
       t.string :title
       t.datetime :date
       t.text :content

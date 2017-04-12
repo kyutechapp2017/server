@@ -1,8 +1,8 @@
 class CreateIizukaOthers < ActiveRecord::Migration[5.0]
   def change
     create_table :iizuka_others do |t|
-      t.text :url, :null => false
-      t.unsigned_integer :board_id, :null => false
+      t.text :url, null: false
+      t.unsigned_integer :board_id, null: false
       t.string :title
       t.datetime :date
       t.string :responsibility
