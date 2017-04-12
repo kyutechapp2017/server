@@ -1,2 +1,3 @@
 class IizukaNotice < ApplicationRecord
+  validates :url, presence: true
 end
