@@ -1,6 +1,11 @@
 class SchedulesController < ApplicationController
   def index
-    @schedules = Product.all
+    @schedules = Subject.all
+    render json: @schedules
+  end
+
+  def update_at
+    @schedules = Subject.all
     render json: @schedules
   end
 end
