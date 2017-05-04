@@ -10,8 +10,13 @@ charset = nil
   regexp = /did=\d{3}/
   url_temp = url_scraping.gsub(regexp, "did=#{did}")
 
+
   (670..672).each do |rid|
     regexp = /rid=(.*)/
+
+  # (660..662).each do |rid|
+  #   regexp = /rid=\d{3}/
+
     url_scraping = url_temp.gsub(regexp, "rid=#{rid}")
 
     html = open(url_scraping) do |f|
@@ -23,10 +28,17 @@ charset = nil
 
     regexp = /<(a href=\")|(">.*)/
     p url_scraping
+
     doc.css('td[class*="record-value-"]' ).each do |tr| # 改良！？
       p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
       if tr.css('a').to_s != "" then
           p tr.css('a').to_s.gsub(regexp, "").gsub("amp;", "")
+
+    # doc.css('td[class*="record-value-"]' ).each do |tr|
+    #   p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
+    #   if tr.css('a').to_s != "" then
+    #       p tr.css('a').to_s.gsub(regexp, "")
+
       end
     end
   end
