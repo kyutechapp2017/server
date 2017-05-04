@@ -1,0 +1,2 @@
+class BulletInBoardsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module BulletInBoardsHelper
+end
