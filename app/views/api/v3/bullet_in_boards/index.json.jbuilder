@@ -1,3 +1,5 @@
-json.array! @bullet_in_boards.each do |bullet_in_board|
-  json.id   bullet_in_board.id
+json.array!(@bulletinboards) do |bulletinboard|
+  json.url bulletinboard.url
+  # json.title calculate_age(bulletinboard.birthday)
 end
+# json.array! @bulletinboards, :id, :title
