@@ -8,21 +8,21 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
-  host: localhost
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: kyutechapp_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: kyutechapp_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: kyutechapp_production
