@@ -1,0 +1,1 @@
+json.extract! subject, :id, :campus_id, :url, :year, :name, :code, :teacher, :department, :classification, :num_of_unit, :grade, :term, :number, :place, :update, :outline, :placement, :item, :procedure, :goal, :criteria, :preparation, :keyword, :textbook, :reference, :note, :email
