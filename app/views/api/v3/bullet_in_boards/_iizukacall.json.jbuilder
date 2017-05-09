@@ -1,1 +1,1 @@
-json.extract! iizukacall, :id, :url, :board_id, :title, :date, :content, :department, :grade, :note, :finish
+json.extract! iizukacall, :id, :url, :title, :date, :content, :department, :grade, :note, :finish
