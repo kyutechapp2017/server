@@ -14,7 +14,7 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
       t.string :term
       t.string :number
       t.string :place
-      t.datetime :update
+      t.datetime :updated
       t.text :outline
       t.text :placement
       t.text :item
