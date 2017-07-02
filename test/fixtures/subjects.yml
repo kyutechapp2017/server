@@ -14,7 +14,7 @@ one:
   term: MyString
   number: MyString
   place: MyString
-  update: 2017-04-10 19:20:59
+  updated: 2017-07-02 17:49:52
   outline: MyText
   placement: MyText
   item: MyText
@@ -42,7 +42,7 @@ two:
   term: MyString
   number: MyString
   place: MyString
-  update: 2017-04-10 19:20:59
+  updated: 2017-07-02 17:49:52
   outline: MyText
   placement: MyText
   item: MyText

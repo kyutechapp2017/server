@@ -2,9 +2,9 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
   def change
     create_table :subjects do |t|
       t.unsigned_integer :campus_id
-      t.text :url, null: false
+      t.text :url
       t.integer :year
-      t.string :name, null: false
+      t.string :name
       t.integer :code
       t.string :teacher
       t.text :department
