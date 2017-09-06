@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502062222) do
+ActiveRecord::Schema.define(version: 20170702084952) do
 
   create_table "iizuka_calls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                      null: false
+    t.text     "url",        limit: 65535, null: false
     t.string   "title"
     t.datetime "date"
     t.text     "content",    limit: 65535
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["date"], name: "index_iizuka_calls_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_calls_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_calls_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_homepages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                      null: false
+    t.text     "url",        limit: 65535, null: false
     t.integer  "board_id",                 null: false, unsigned: true
     t.datetime "date"
     t.text     "place",      limit: 65535
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["date"], name: "index_iizuka_homepages_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_homepages_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_homepages_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_intensive_lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.string   "title"
     t.datetime "date"
     t.text     "content",          limit: 65535
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_intensive_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_intensive_lectures_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_intensive_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.integer  "board_id",                       null: false, unsigned: true
     t.string   "title"
     t.string   "subject"
@@ -90,11 +90,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_lectures_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_lectures_on_url", unique: true, length: { url: 100 }, using: :btree
   end
 
   create_table "iizuka_notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.string   "title"
     t.datetime "date"
     t.string   "period"
@@ -115,11 +115,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_notices_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_notices_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_notices_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_others", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.integer  "board_id",                       null: false, unsigned: true
     t.string   "title"
     t.datetime "date"
@@ -139,11 +139,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_others_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_others_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_others_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.string   "title"
     t.datetime "date"
     t.text     "content",          limit: 65535
@@ -156,11 +156,11 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_scholarships_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_scholarships_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_scholarships_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_studying_abroads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url",                            null: false
+    t.text     "url",              limit: 65535, null: false
     t.string   "title"
     t.datetime "date"
     t.string   "responsibility"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_studying_abroads_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_studying_abroads_on_url", unique: true, using: :btree
+    t.index ["url"], name: "index_iizuka_studying_abroads_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "intermediates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -188,9 +188,9 @@ ActiveRecord::Schema.define(version: 20170502062222) do
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "campus_id",                                 unsigned: true
-    t.string   "url",                          null: false
+    t.text     "url",            limit: 65535
     t.integer  "year"
-    t.string   "name",                         null: false
+    t.string   "name"
     t.integer  "code"
     t.string   "teacher"
     t.text     "department",     limit: 65535
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.string   "term"
     t.string   "number"
     t.string   "place"
-    t.datetime "update"
+    t.datetime "updated"
     t.text     "outline",        limit: 65535
     t.text     "placement",      limit: 65535
     t.text     "item",           limit: 65535
@@ -216,13 +216,7 @@ ActiveRecord::Schema.define(version: 20170502062222) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["code"], name: "index_subjects_on_code", unique: true, using: :btree
-    t.index ["url"], name: "index_subjects_on_url", unique: true, using: :btree
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_subjects_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "week_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

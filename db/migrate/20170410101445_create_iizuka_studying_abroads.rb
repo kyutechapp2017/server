@@ -18,6 +18,6 @@ class CreateIizukaStudyingAbroads < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_studying_abroads, :date
-    add_index :iizuka_studying_abroads, :url, unique: true
+    add_index :iizuka_studying_abroads, :url, unique: true, length: 256
   end
 end

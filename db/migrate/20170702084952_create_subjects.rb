@@ -30,7 +30,7 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :subjects, :url, unique: true
+    add_index :subjects, :url, unique: true, length: 256
     add_index :subjects, :code, unique: true
   end
 end

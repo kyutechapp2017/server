@@ -20,6 +20,6 @@ class CreateIizukaIntensiveLectures < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_intensive_lectures, :date
-    add_index :iizuka_intensive_lectures, :url, unique: true
+    add_index :iizuka_intensive_lectures, :url, unique: true, length: 256
   end
 end

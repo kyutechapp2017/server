@@ -12,6 +12,6 @@ class CreateIizukaHomepages < ActiveRecord::Migration[5.0]
       t.timestamps
     end
     add_index :iizuka_homepages, :date
-    add_index :iizuka_homepages, :url, unique: true
+    add_index :iizuka_homepages, :url, unique: true, length: 256
   end
 end
