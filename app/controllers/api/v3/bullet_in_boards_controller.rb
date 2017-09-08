@@ -1,7 +1,7 @@
 class Api::V3::BulletInBoardsController < ApplicationController
   def index
     genre_id = params[:genre_id].to_i
-    # ここでupdated_atをdatetime型に修正する
+    updated_at = Time.at(params[:updated_at])
     if genre_id == 0 then
       @iizukanotices = IizukaNotice.all
       @iizukalectures = IizukaLecture.all
@@ -12,21 +12,21 @@ class Api::V3::BulletInBoardsController < ApplicationController
       @iizukaothers = IizukaOther.all
       @iizukahomepages = IizukaHomepage.all
     elsif genre_id == 1 then
-      @iizukanotices = IizukaNotice.all
+      @iizukanotices = IizukaNotice.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==2 then
-      @iizukalectures = IizukaLecture.all
+      @iizukalectures = IizukaLecture.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==3 then
-      @iizukacalls = IizukaCall.all
+      @iizukacalls = IizukaCall.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==4 then
-      @iizukaintensivelectures = IizukaIntensiveLecture.all
+      @iizukaintensivelectures = IizukaIntensiveLecture.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==5 then
-      @iizukastudyingabroads = IizukaStudyingAbroad.all
+      @iizukastudyingabroads = IizukaStudyingAbroad.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==6 then
-      @iizukascholarships = IizukaScholarship.all
+      @iizukascholarships = IizukaScholarship.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==7 then
-      @iizukaothers = IizukaOther.all
+      @iizukaothers = IizukaOther.where(updated_at: updated..Time.now.to_s)
     elsif genre_id ==8 then
-      @iizukahomepages = IizukaHomepage.all
+      @iizukahomepages = IizukaHomepage.where(updated_at: updated..Time.now.to_s)
     end
   end
 end
