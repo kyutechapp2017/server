@@ -6,17 +6,15 @@ require 'date'
 url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
 url_tail = 'db.cgi?page=DBRecord&did=364&rid=15'
 
-html = open(url_head+url_tail, "r:binary").read
+html = open(url_head + url_tail, "r:binary").read
 doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 
 place = "td[class*=\"record-value-\"]"
 
-datas = [""]
-count = 0
+datas = [url_head + url_tail]
+count = 1
 date_find = /([0-9０-９]{1,4})[\/\-\.\／－．年]{1}([0-9０-９]{1,2})[\/\-\.\／－．月]{1}([0-9０-９]{1,2})[\/\-\.\／－．日]?$/iu
 
-datas_url = [""]
-count_url = 0
 url_find = /db.cgi.+/
 regexp = /<(a href=\")|(">.*)/
 
