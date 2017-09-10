@@ -1,45 +1,41 @@
-# coding: utf-8
-
 require 'open-uri'
 require 'nokogiri'
+require 'kconv'
+require 'date'
 
-url_scraping = "https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBRecord&did=357&rid=661"
-charset = nil
+url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
+url_tail = 'db.cgi?page=DBRecord&did=364&rid=15'
 
-[357,391,361,363,393,364,373,367,379,372,368,370].each do |did|
-  regexp = /did=\d{3}/
-  url_temp = url_scraping.gsub(regexp, "did=#{did}")
+html = open(url_head+url_tail, "r:binary").read
+doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 
+place = "td[class*=\"record-value-\"]"
 
-  (670..672).each do |rid|
-    regexp = /rid=(.*)/
+datas = [""]
+count = 0
+date_find = /([0-9０-９]{1,4})[\/\-\.\／－．年]{1}([0-9０-９]{1,2})[\/\-\.\／－．月]{1}([0-9０-９]{1,2})[\/\-\.\／－．日]?$/iu
 
-  # (660..662).each do |rid|
-  #   regexp = /rid=\d{3}/
+datas_url = [""]
+count_url = 0
+url_find = /db.cgi.+/
+regexp = /<(a href=\")|(">.*)/
 
-    url_scraping = url_temp.gsub(regexp, "rid=#{rid}")
+doc.css(place).each do |td|
+  datas[count] = td.inner_text.gsub(/　|\r/,"")
+  if(datas[count] =~ date_find) then
+    date_material = datas[count].match(date_find)
+    datas[count] = DateTime.parse("#{date_material[1]}-#{date_material[2]}-#{date_material[3]} ")
+  end
 
-    html = open(url_scraping) do |f|
-      charset = f.charset
-      f.read
-    end
-
-    doc = Nokogiri::HTML.parse(html, nil, charset)
-
-    regexp = /<(a href=\")|(">.*)/
-    p url_scraping
-
-    doc.css('td[class*="record-value-"]' ).each do |tr| # 改良！？
-      p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
-      if tr.css('a').to_s != "" then
-          p tr.css('a').to_s.gsub(regexp, "").gsub("amp;", "")
-
-    # doc.css('td[class*="record-value-"]' ).each do |tr|
-    #   p tr.inner_text.gsub(/(\s)|([\t| |　]+)|[\u00A0]/,"")
-    #   if tr.css('a').to_s != "" then
-    #       p tr.css('a').to_s.gsub(regexp, "")
-
-      end
+  if td.css('a').to_s != "" then
+    temp = td.css('a').to_s.gsub(regexp, "").gsub("amp;", "")
+    if temp =~ url_find then
+      count = count + 1
+      datas[count] = url_head+temp
     end
   end
+
+  count = count + 1
 end
+
+p datas
