@@ -9,9 +9,9 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
       t.string :teacher
       t.text :department
       t.string :classification
-      t.unsigned_integer :num_of_unit
+      t.string :num_of_unit
       t.string :grade
-      t.string :term
+      t.unsigned_integer :term
       t.string :number
       t.string :place
       t.datetime :updated

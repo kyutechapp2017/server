@@ -9,12 +9,12 @@ one:
   teacher: MyString
   department: MyText
   classification: MyString
-  num_of_unit: 
+  num_of_unit: MyString
   grade: MyString
-  term: MyString
+  term: 
   number: MyString
   place: MyString
-  updated: 2017-07-02 17:49:52
+  updated: 2017-09-13 08:35:09
   outline: MyText
   placement: MyText
   item: MyText
@@ -37,12 +37,12 @@ two:
   teacher: MyString
   department: MyText
   classification: MyString
-  num_of_unit: 
+  num_of_unit: MyString
   grade: MyString
-  term: MyString
+  term: 
   number: MyString
   place: MyString
-  updated: 2017-07-02 17:49:52
+  updated: 2017-09-13 08:35:09
   outline: MyText
   placement: MyText
   item: MyText
