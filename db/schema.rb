@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20170912233509) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_lectures_on_url", unique: true, length: { url: 100 }, using: :btree
+    t.index ["url"], name: "index_iizuka_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
