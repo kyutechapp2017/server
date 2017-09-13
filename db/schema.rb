@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702084952) do
+ActiveRecord::Schema.define(version: 20170912233509) do
 
   create_table "iizuka_calls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",        limit: 65535, null: false
@@ -195,9 +195,9 @@ ActiveRecord::Schema.define(version: 20170702084952) do
     t.string   "teacher"
     t.text     "department",     limit: 65535
     t.string   "classification"
-    t.integer  "num_of_unit",                               unsigned: true
+    t.string   "num_of_unit"
     t.string   "grade"
-    t.string   "term"
+    t.integer  "term",                                      unsigned: true
     t.string   "number"
     t.string   "place"
     t.datetime "updated"

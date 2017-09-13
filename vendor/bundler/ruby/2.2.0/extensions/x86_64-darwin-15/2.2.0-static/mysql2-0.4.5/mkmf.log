@@ -1,0 +1,589 @@
+have_func: checking for rb_absint_size()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_absint_size; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_absint_singlebit_p()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_absint_singlebit_p; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"clang -E -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/thread.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- no
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_thread_blocking_region'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_thread_blocking_region' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_thread_blocking_region(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_thread_blocking_region", referenced from:
+      _t in conftest-0f4d5e.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_thread_blocking_region(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_wait_for_single_fd'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_wait_for_single_fd' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_wait_for_single_fd(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_wait_for_single_fd(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_intern3'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:15: warning: implicit declaration of function 'rb_intern3' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_intern3(); return 0; }
+              ^
+1 warning generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { rb_intern3(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_big_cmp()... -------------------- yes
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_big_cmp; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for mysql.h... -------------------- yes
+
+"clang -E -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+/* end */
+
+--------------------
+
+have_const: checking for SSL_MODE_DISABLED in mysql.h... -------------------- yes
+
+"clang -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+4: 
+5: /*top*/
+6: typedef int conftest_type;
+7: conftest_type conftestval = (int)SSL_MODE_DISABLED;
+/* end */
+
+--------------------
+
+have_const: checking for SSL_MODE_PREFERRED in mysql.h... -------------------- yes
+
+"clang -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+4: 
+5: /*top*/
+6: typedef int conftest_type;
+7: conftest_type conftestval = (int)SSL_MODE_PREFERRED;
+/* end */
+
+--------------------
+
+have_const: checking for SSL_MODE_REQUIRED in mysql.h... -------------------- yes
+
+"clang -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+4: 
+5: /*top*/
+6: typedef int conftest_type;
+7: conftest_type conftestval = (int)SSL_MODE_REQUIRED;
+/* end */
+
+--------------------
+
+have_const: checking for SSL_MODE_VERIFY_CA in mysql.h... -------------------- yes
+
+"clang -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+4: 
+5: /*top*/
+6: typedef int conftest_type;
+7: conftest_type conftestval = (int)SSL_MODE_VERIFY_CA;
+/* end */
+
+--------------------
+
+have_const: checking for SSL_MODE_VERIFY_IDENTITY in mysql.h... -------------------- yes
+
+"clang -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+4: 
+5: /*top*/
+6: typedef int conftest_type;
+7: conftest_type conftestval = (int)SSL_MODE_VERIFY_IDENTITY;
+/* end */
+
+--------------------
+
+have_header: checking for errmsg.h... -------------------- yes
+
+"clang -E -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <errmsg.h>
+/* end */
+
+--------------------
+
+have_header: checking for mysqld_error.h... -------------------- yes
+
+"clang -E -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysqld_error.h>
+/* end */
+
+--------------------
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Weverything -lpthread -ldl -lobjc "
+In file included from conftest.c:1:
+In file included from /Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby.h:33:
+In file included from /Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/ruby.h:24:
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:15:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define __EXTENSIONS__ 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:16:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _ALL_SOURCE 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:17:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _GNU_SOURCE 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:18:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _POSIX_PTHREAD_SEMANTICS 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:19:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _TANDEM_SOURCE 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:319:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _REENTRANT 1
+        ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15/ruby/config.h:320:9: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#define _THREAD_SAFE 1
+        ^
+In file included from conftest.c:1:
+In file included from /Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby.h:33:
+In file included from /Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/ruby.h:36:
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/defines.h:88:8: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+#undef __
+       ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/defines.h:90:10: error: macro name is a reserved identifier [-Werror,-Wreserved-id-macro]
+# define __(args) args
+         ^
+In file included from conftest.c:1:
+In file included from /Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby.h:33:
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/ruby.h:819:5: error: unknown command tag name [-Werror,-Wdocumentation-unknown-command]
+/** @internal */
+    ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/ruby.h:1306:58: error: 'filename' was marked unused but was used [-Werror,-Wused-but-marked-unused]
+    rb_obj_written(a, Qundef /* ignore `oldv' now */, b, filename, line);
+                                                         ^
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/ruby.h:1306:68: error: 'line' was marked unused but was used [-Werror,-Wused-but-marked-unused]
+    rb_obj_written(a, Qundef /* ignore `oldv' now */, b, filename, line);
+                                                                   ^
+12 errors generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-bad-function-cast -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-conditional-uninitialized -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-covered-switch-default -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-declaration-after-statement -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-disabled-macro-expansion -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-documentation-unknown-command -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-missing-field-initializers -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-missing-variable-declarations -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-padded -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-reserved-id-macro -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-sign-conversion -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-static-in-inline -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-switch-enum -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-undef -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-unreachable-code -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation -Werror -Wno-used-but-marked-unused -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/x86_64-darwin15 -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0/ruby/backward -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include/ruby-2.2.0 -I. -I/usr/local/Cellar/mysql/5.7.17/include/mysql -I/Users/yamamotokazuo/.rbenv/versions/2.2.5/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -DFULL_SSL_MODE_SUPPORT -Wno-bad-function-cast -Wno-conditional-uninitialized -Wno-covered-switch-default -Wno-declaration-after-statement -Wno-disabled-macro-expansion -Wno-documentation-unknown-command -Wno-missing-field-initializers -Wno-missing-variable-declarations -Wno-padded -Wno-reserved-id-macro -Wno-sign-conversion -Wno-static-in-inline -Wno-switch-enum -Wno-undef -Wno-unreachable-code -Wno-used-but-marked-unused conftest.c  -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib -L. -L/Users/yamamotokazuo/.rbenv/versions/2.2.5/lib  -fstack-protector    -L/usr/local/Cellar/mysql/5.7.17/lib -lmysqlclient -lssl -lcrypto  -lruby-static -framework CoreFoundation  -Wl,-rpath,/usr/local/Cellar/mysql/5.7.17/lib -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+

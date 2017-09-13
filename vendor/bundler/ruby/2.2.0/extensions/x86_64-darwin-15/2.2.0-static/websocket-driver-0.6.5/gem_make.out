@@ -1,0 +1,11 @@
+/Users/yamamotokazuo/.rbenv/versions/2.2.5/bin/ruby -r ./siteconf20170913-2027-1hcdrl0.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20170913-2027-8k0155
