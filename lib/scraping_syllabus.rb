@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require "nokogiri"
+require 'date'
 
 url = "https://edragon-syllabus.jimu.kyutech.ac.jp/guest/syllabuses"
 
@@ -13,32 +14,30 @@ select.select_by(:text, '情報工学部')
 
 driver.find_element(:xpath, '//*[@id="search-simple"]/div/div[3]/button').submit
 
-time = 10
+time = 8
 sleep time
 # とりあえず、一番上の科目をクリック
 driver.find_element(:xpath, '//*[@id="main"]/div[2]/div[1]/div[1]/div/div/div[1]/ul/li[1]/a').click
-sleep time
+sleep time - 3
 
-# campus_id = 11
-# year = 2017
+campus_id = 11
+year = 2017
 # code = 11009435
 # number = "01"
 
 doc = Nokogiri::HTML driver.page_source.encode("UTF-8")
 datas = [""]
 count = 0
+periods = [""]
 
 datas_1 = [""]
 count_1 = 0
 excep_1 = /【.*】\s{0,10}/
 doc.css('div.syllabus__information > div > div').each do |div|
   datas_1[count_1] = div.inner_text.gsub(excep_1,"")
-  # if datas_1[count_1] =~ /([0-9]{4})\/([0-9]{2})\/([0-9]{2})\s\(.\)/ then
-  #   datas_1[count_1].gsub!(/\s\(.\)/, "")
-  # end
   count_1 = count_1 + 1
 end
-p datas_1
+# p datas_1
 
 datas_2 = [""]
 count_2 = 0
@@ -71,13 +70,103 @@ doc.css("div[class*=\"row syllabus__section syllabus-section--target\"]").each d
 end
 # p datas_4
 
-# datas[0] = campus_id
-# count = count + 1
-# datas[1] = "https://edragon-syllabus.jimu.kyutech.ac.jp/guest/syllabuses/direct?faculty_code=#{campus_id}&year=#{year}&"
-# datas[2] = year
-# 3.
+datas[0] = campus_id
+count = count + 1
+datas[1] = "https://edragon-syllabus.jimu.kyutech.ac.jp/guest/syllabuses/direct?faculty_code=#{campus_id}&year=#{year}&subject_code="
+datas[2] = year
+(0..11).each do |i|
+  if i == 1 then
+    datas[i+3] = datas_1[i].to_i
+    datas[1] = datas[1] + datas_1[i] + "&class_code="
+  elsif i == 7 then
+    case datas_1[i]
+    when "第1クォーター" then
+      datas[i+3] = 1
+    when "第2クォーター" then
+      datas[i+3] = 2
+    when "第3クォーター" then
+      datas[i+3] = 3
+    when "第4クォーター" then
+      datas[i+3] = 4
+    when "前期" then
+      datas[i+3] = 5
+    when "後期" then
+      datas[i+3] = 6
+    else
+      datas[i+3] = 7
+    end
+  elsif i == 8 then
+    datas[i+3] = datas_1[i]
+    datas[1] = datas[1] + datas_1[i]
+  elsif i == 9 then # 時間割
+    temp = datas_1[i].split(",")
+    array = [""]
+    temp.each do |tmp|
+      temp_week = [""]
+      if tmp =~ /.曜\s\d限/ then
+        case tmp.match(/./)[0]
+        when "月" then
+          temp_week[0] = 1
+        when "火" then
+          temp_week[0] = 2
+        when "水" then
+          temp_week[0] = 3
+        when "木" then
+          temp_week[0] = 4
+        when "金" then
+          temp_week[0] = 5
+        else
+          temp_week[0] = 6
+        end
 
+        case tmp.match(/\d/)[0]
+        when "1" then
+          temp_week[1] = 1
+        when "2" then
+          temp_week[1] = 2
+        when "3" then
+          temp_week[1] = 3
+        when "4" then
+          temp_week[1] = 4
+        when "5" then
+          temp_week[1] = 5
+        else
+          temp_week[1] = 6
+        end
+      else
+        temp_week = [6,6] # 変更箇所
+      end
+      array.push(temp_week)
+    end
+    periods.delete("")
+    (1...array.length).each do |i|
+      periods.push(array[i])
+    end
+  elsif i == 10
+    datas[i+2] = datas_1[i]
+  elsif i == 11 then
+    datas[i+2] = DateTime.parse(datas_1[i].gsub!(/\s\(.\)/, ""))
+  else
+    datas[i+3] = datas_1[i]
+  end
+end
 
-driver.quit
+(0..9).each do |i|
+  case i
+  when 0, 1 then
+    datas[i+14] = datas_2[i]
+  when 2 then
+    datas[i+14] = datas_3.join("\n")
+    datas[i+15] = datas_2[i]
+  when 3 then
+    datas[i+15] = datas_4
+    datas[i+16] = datas_2[i]
+  else
+    datas[i+16] = datas_2[i]
+  end
+end
+p datas
+p periods
+
 
 driver.quit
