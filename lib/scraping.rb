@@ -189,12 +189,12 @@ module Scraping
               datas[i+16] = datas_2[i]
             end
           end
-          p datas
-          p periods
-          # データ格納
+          # p datas
+          # p periods
+
           send_data[send_count] = [datas, periods]
           send_count = send_count + 1
-          p send_data
+
 
           i = i + 1
         end
@@ -208,8 +208,9 @@ module Scraping
         end
       end
     end
-
+    driver.quit
     return send_data
+
   end
   module_function :syllabus
 end

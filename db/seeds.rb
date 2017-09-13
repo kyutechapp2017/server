@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..6).each do |i|
+  (1..6).each do |j|
+    WeekPeriod.create do |s|
+      s.week_num= i
+      s.period_num = j
+    end
+  end
+end
