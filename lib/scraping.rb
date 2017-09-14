@@ -11,13 +11,15 @@ module Scraping
     datas = [""]
     rid = latest_rid + 1
 
-    # url_top = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBView&did='
-    # html = open(url_top + scraping_did, "r:binary").read
-    # doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-    # doc.css('td.dz_fontSmall')
+    url_top = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBView&did='
+    html = open(url_top + scraping_did.to_s, "r:binary").read
+    doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+    temp_rid = doc.css('td.dz_fontSmall > a').attribute('href').value
+    rid_max = temp_rid.match(/rid=\d{0,4}/)[0].gsub(/rid=/, "")
+
     begin
 
-      loop do
+      while rid != rid_max + 1 do
 
         url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
         url_tail = "db.cgi?page=DBRecord&did=#{scraping_did}&rid=#{rid}"
@@ -72,7 +74,7 @@ module Scraping
         p "some error was happened"
       end
     end
-    return [send_data, rid]
+    return [send_data, rid_max]
     p rid
     p send_data
   end
