@@ -3,19 +3,17 @@
 one:
   url: MyText
   title: MyString
-  date: 2017-04-10 19:13:51
+  date: 2017-09-14 21:28:34
   content: MyText
   department: MyString
   grade: MyString
   note: MyString
-  finish: MyString
 
 two:
   url: MyText
   title: MyString
-  date: 2017-04-10 19:13:51
+  date: 2017-09-14 21:28:34
   content: MyText
   department: MyString
   grade: MyString
   note: MyString
-  finish: MyString
