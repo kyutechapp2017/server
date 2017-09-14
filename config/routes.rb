@@ -14,5 +14,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :schedules
 
-  root 'subjects#index'
+  namespace :scraping do
+    namespace :v3 do
+      get 'bulletinboards', to: 'bulletinboards#index'
+    end
+  end
+
+  namespace :scraping do
+    namespace :v3 do
+      get 'syllabuses', to: 'syllabuses#index'
+    end
+  end
 end
