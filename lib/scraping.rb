@@ -4,9 +4,77 @@ require 'date'
 require 'kconv'
 
 module Scraping
-  def bulletinboard(updated_at)
-    name = "Kazuo"
-    puts "hello, #{name}"
+  def bulletinboard(scraping_did, latest_rid)
+    send_data = [""]
+    send_count = 0
+
+    datas = [""]
+    rid = latest_rid + 1
+
+    # url_top = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBView&did='
+    # html = open(url_top + scraping_did, "r:binary").read
+    # doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+    # doc.css('td.dz_fontSmall')
+    begin
+
+      loop do
+
+        url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
+        url_tail = "db.cgi?page=DBRecord&did=#{scraping_did}&rid=#{rid}"
+
+        p url_tail
+        # debug
+
+        html = open(url_head + url_tail, "r:binary").read
+        doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+
+        place = "td[class*=\"record-value-\"]"
+
+        datas = [url_head + url_tail]
+        count = 1
+        date_find = /([0-9０-９]{1,4})[\/\-\.\／－．年]{1}([0-9０-９]{1,2})[\/\-\.\／－．月]{1}([0-9０-９]{1,2})[\/\-\.\／－．日]?$/iu
+
+        url_find = /db.cgi.+/
+        regexp = /<(a href=\")|(">.*)/
+
+        doc.css(place).each do |td|
+          datas[count] = td.inner_text.gsub(/　|\r/,"")
+          if(datas[count] =~ date_find) then
+            date_material = datas[count].match(date_find)
+            datas[count] = DateTime.parse("#{date_material[1]}-#{date_material[2]}-#{date_material[3]} ")
+          end
+
+          if td.css('a').to_s != "" then
+            temp = td.css('a').to_s.gsub(regexp, "").gsub("amp;", "")
+            if temp =~ url_find then
+              count = count + 1
+              datas[count] = url_head+temp
+            end
+          end
+
+          count = count + 1
+        end
+
+        if datas == [url_head + url_tail] then
+          # finish = true
+          break
+        end
+
+        send_data[send_count] = datas
+        send_count = send_count + 1
+        rid = rid + 1
+
+      end
+    rescue
+      if datas == [""] then
+        p "finished"
+      else
+        p "some error was happened"
+      end
+    end
+    return [send_data, rid]
+    p rid
+    p send_data
   end
 
   def syllabus(campus_id, year)
@@ -209,5 +277,5 @@ module Scraping
     return send_data
 
   end
-  module_function :syllabus
+
 end
