@@ -1,10 +1,7 @@
 require 'selenium-webdriver'
 require "nokogiri"
 require 'date'
-
-# class ScrapingClass
-#   include Scraping
-# end
+require 'kconv'
 
 module Scraping
   def bulletinboard(updated_at)

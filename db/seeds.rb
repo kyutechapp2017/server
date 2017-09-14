@@ -14,3 +14,14 @@
     end
   end
 end
+
+dids = [357,391,361,363,393,364,373,367,379,372,368,370]
+rids = [864,134,493,99,91,1,1,224,21,166,5,2]
+
+
+(0..11).each do |i|
+  IdOfBulletinboard.create do |s|
+    s.did = dids[i]
+    s.rid = rids[i]
+  end
+end

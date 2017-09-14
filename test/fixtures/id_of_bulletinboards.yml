@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  did: 1
+  rid: 1
+
+two:
+  did: 1
+  rid: 1

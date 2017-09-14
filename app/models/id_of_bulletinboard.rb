@@ -1,0 +1,2 @@
+class IdOfBulletinboard < ApplicationRecord
+end
