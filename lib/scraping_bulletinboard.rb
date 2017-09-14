@@ -4,7 +4,7 @@ require 'kconv'
 require 'date'
 
 url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
-url_tail = 'db.cgi?page=DBRecord&did=393&qid=all&vid=24&rid=110&Head=&hid=&sid=n&rev=0&ssid=1-926-11611-g58'
+url_tail = 'db.cgi?page=DBRecord&did=367&qid=all&vid=24&rid=241&Head=&hid=&sid=n&rev=0&ssid=1-2295-12229-g58'
 
 html = open(url_head + url_tail, "r:binary").read
 doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")

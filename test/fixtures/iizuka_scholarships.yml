@@ -3,23 +3,21 @@
 one:
   url: MyText
   title: MyString
-  date: 2017-04-10 19:15:01
+  date: 2017-09-14 21:44:17
   content: MyText
   note: MyString
   attachment_1: MyString
   attachment_1_url: MyText
   attachment_2: MyString
   attachment_2_url: MyText
-  finish: MyString
 
 two:
   url: MyText
   title: MyString
-  date: 2017-04-10 19:15:01
+  date: 2017-09-14 21:44:17
   content: MyText
   note: MyString
   attachment_1: MyString
   attachment_1_url: MyText
   attachment_2: MyString
   attachment_2_url: MyText
-  finish: MyString

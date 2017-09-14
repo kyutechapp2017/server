@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914051838) do
+ActiveRecord::Schema.define(version: 20170914124417) do
 
   create_table "id_of_bulletinboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "did"
@@ -20,14 +20,13 @@ ActiveRecord::Schema.define(version: 20170914051838) do
   end
 
   create_table "iizuka_calls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",        limit: 65535, null: false
+    t.text     "url",        limit: 65535
     t.string   "title"
     t.datetime "date"
     t.text     "content",    limit: 65535
     t.string   "department"
     t.string   "grade"
     t.string   "note"
-    t.string   "finish"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["date"], name: "index_iizuka_calls_on_date", using: :btree
@@ -150,7 +149,7 @@ ActiveRecord::Schema.define(version: 20170914051838) do
   end
 
   create_table "iizuka_scholarships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",              limit: 65535, null: false
+    t.text     "url",              limit: 65535
     t.string   "title"
     t.datetime "date"
     t.text     "content",          limit: 65535
@@ -159,7 +158,6 @@ ActiveRecord::Schema.define(version: 20170914051838) do
     t.text     "attachment_1_url", limit: 65535
     t.string   "attachment_2"
     t.text     "attachment_2_url", limit: 65535
-    t.string   "finish"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_scholarships_on_date", using: :btree
