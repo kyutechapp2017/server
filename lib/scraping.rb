@@ -24,9 +24,6 @@ module Scraping
         url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
         url_tail = "db.cgi?page=DBRecord&did=#{scraping_did}&rid=#{rid}"
 
-        p url_tail
-        # debug
-
         html = open(url_head + url_tail, "r:binary").read
         doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
 
@@ -75,8 +72,6 @@ module Scraping
       end
     end
     return [send_data, rid_max]
-    p rid
-    p send_data
   end
 
   def syllabus(campus_id, year)
