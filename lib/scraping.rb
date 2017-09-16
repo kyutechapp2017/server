@@ -2,24 +2,39 @@ require 'selenium-webdriver'
 require "nokogiri"
 require 'date'
 require 'kconv'
+require 'open-uri'
 
 module Scraping
-  def bulletinboard(scraping_did, latest_rid)
+  def get_ids_for_bulletinboard
+    idsets = IdOfBulletinboard.all
+    return idsets
+  end
+
+  def get_last_rid_from_bulletinboard(scraping_did)
+    url = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBView&did='
+    html = open(url + scraping_did.to_s, "r:binary").read
+    doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
+    temp_rid = doc.css('td.dz_fontSmall > a').attribute('href').value
+    last_rid = temp_rid.match(/rid=\d{0,4}/)[0].gsub(/rid=/, "")
+    return last_rid.to_i
+  end
+
+  def update_rid(scraping_did, last_rid)
+    idset = IdOfBulletinboard.find_by(did: scraping_did)
+    idset.rid = last_rid
+    idset.save
+  end
+
+  def bulletinboard(scraping_did, latest_rid, last_rid)
     send_data = [""]
     send_count = 0
 
     datas = [""]
     rid = latest_rid + 1
 
-    url_top = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/db.cgi?page=DBView&did='
-    html = open(url_top + scraping_did.to_s, "r:binary").read
-    doc = Nokogiri::HTML.parse(html.toutf8, nil, "UTF-8")
-    temp_rid = doc.css('td.dz_fontSmall > a').attribute('href').value
-    rid_max = temp_rid.match(/rid=\d{0,4}/)[0].gsub(/rid=/, "")
-
     begin
 
-      while rid != rid_max + 1 do
+      while rid != last_rid + 1 do
 
         url_head = 'https://db.jimu.kyutech.ac.jp/cgi-bin/cbdb/'
         url_tail = "db.cgi?page=DBRecord&did=#{scraping_did}&rid=#{rid}"
@@ -54,11 +69,7 @@ module Scraping
           count = count + 1
         end
 
-        if datas == [url_head + url_tail] then
-          # finish = true
-          break
-        end
-
+        p datas
         send_data[send_count] = datas
         send_count = send_count + 1
         rid = rid + 1
@@ -67,11 +78,12 @@ module Scraping
     rescue
       if datas == [""] then
         p "finished"
+
       else
         p "some error was happened"
       end
     end
-    return [send_data, rid_max]
+    return send_data
   end
 
   def syllabus(campus_id, year)
