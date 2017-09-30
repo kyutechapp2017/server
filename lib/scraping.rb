@@ -213,7 +213,7 @@ module Scraping
         loop do
           xpath = "//*[@id=\"main\"]/div[2]/div[1]/div[1]/div/div/div[#{j}]/ul/li[#{i}]/a"
           driver.find_element(:xpath, xpath).click
-          sleep time - 7
+          sleep time - 5
 
           doc = Nokogiri::HTML driver.page_source.encode("UTF-8")
           datas = [""]
@@ -328,6 +328,7 @@ module Scraping
                 end
                 array.push(temp_week)
               end
+              periods = [""]
               periods.delete("")
               (1...array.length).each do |i|
                 periods.push(array[i])
@@ -358,10 +359,27 @@ module Scraping
           # p datas
           # p periods
 
-          send_data[send_count] = [datas, periods]
-          send_count = send_count + 1
+          # send_data[send_count] = [datas, periods]
+          # send_count = send_count + 1
 
 
+
+          # DB格納
+          gdata = datas
+          if Subject.find_by(url: gdata[1], updated: gdata[13]) == nil then
+
+            subject = Subject.new(campus_id: gdata[0], url: gdata[1], year: gdata[2], name: gdata[3], code: gdata[4], teacher: gdata[5], department: gdata[6], classification: gdata[7], num_of_unit: gdata[8], grade: gdata[9], term: gdata[10], number: gdata[11], place: gdata[12], updated: gdata[13], outline: gdata[14], placement: gdata[15], item: gdata[16], procedure: gdata[17], goal: gdata[18], criteria: gdata[19], preparation: gdata[20], keyword: gdata[21], textbook: gdata[22], reference: gdata[23], note: gdata[24], email: gdata[25])
+            subject.save
+
+            linkage = Subject.last
+            link_id = linkage.id
+            p periods
+            periods.each do |k|
+              wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
+              intmed = Intermediate.new(subject_id: link_id, week_period_id: wp.id)
+              intmed.save
+            end
+          end
           i = i + 1
         end
       rescue
@@ -375,7 +393,7 @@ module Scraping
       end
     end
     driver.quit
-    return send_data
+    # return send_data
 
   end
 
