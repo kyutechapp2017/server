@@ -35,6 +35,7 @@ gem 'slim-rails'
 
 gem 'selenium-webdriver'
 
+gem 'whenever', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -110,7 +110,7 @@ module Scraping
           end
         end
       end
-      
+
       iizuka.save
     when 393 then
       iizuka = IizukaCall.new(url: get_data[0], title: get_data[1],  department: get_data[3], grade: get_data[4], content: get_data[5], note: get_data[6], date: get_data[7])
