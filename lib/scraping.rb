@@ -366,15 +366,24 @@ module Scraping
 
           # DB格納
           gdata = datas
+          # db_set_of_syllabus(datas, periods)
           if Subject.find_by(url: gdata[1], updated: gdata[13]) == nil then
 
             subject = Subject.new(campus_id: gdata[0], url: gdata[1], year: gdata[2], name: gdata[3], code: gdata[4], teacher: gdata[5], department: gdata[6], classification: gdata[7], num_of_unit: gdata[8], grade: gdata[9], term: gdata[10], number: gdata[11], place: gdata[12], updated: gdata[13], outline: gdata[14], placement: gdata[15], item: gdata[16], procedure: gdata[17], goal: gdata[18], criteria: gdata[19], preparation: gdata[20], keyword: gdata[21], textbook: gdata[22], reference: gdata[23], note: gdata[24], email: gdata[25])
+            binding.pry
+
+            # ここがまずい
             subject.save
 
-            linkage = Subject.last
-            link_id = linkage.id
+            binding.pry
+            # linkage = Subject.maximum(:id)
+            # link_id = linkage.id
+
+            # ここがまずい?
+            link_id  = Subject.maximum(:id)
             p periods
             periods.each do |k|
+              binding.pry
               wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
               intmed = Intermediate.new(subject_id: link_id, week_period_id: wp.id)
               intmed.save
@@ -396,5 +405,26 @@ module Scraping
     # return send_data
 
   end
+
+  # def db_set_of_syllabus(gdata, periods)
+  #   if Subject.find_by(url: gdata[1], updated: gdata[13]) == nil then
+  #
+  #     subject = Subject.new(campus_id: gdata[0], url: gdata[1], year: gdata[2], name: gdata[3], code: gdata[4], teacher: gdata[5], department: gdata[6], classification: gdata[7], num_of_unit: gdata[8], grade: gdata[9], term: gdata[10], number: gdata[11], place: gdata[12], updated: gdata[13], outline: gdata[14], placement: gdata[15], item: gdata[16], procedure: gdata[17], goal: gdata[18], criteria: gdata[19], preparation: gdata[20], keyword: gdata[21], textbook: gdata[22], reference: gdata[23], note: gdata[24], email: gdata[25])
+  #     subject.save
+  #
+  #     # ここがまずい
+  #     linkage = Subject.maximum(:id)
+  #
+  #     link_id = linkage.id
+  #     p periods
+  #     binding.pry
+  #     periods.each do |k|
+  #       binding.pry
+  #       wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
+  #       intmed = Intermediate.new(subject_id: link_id, week_period_id: wp.id)
+  #       intmed.save
+  #     end
+  #   end
+  # end
 
 end
