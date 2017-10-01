@@ -69,9 +69,10 @@ module Scraping
           count = count + 1
         end
 
-        # p datas
-        send_data[send_count] = datas
-        send_count = send_count + 1
+        get_data = datas
+
+        db_set_of_bulletinboard(get_data, scraping_did)
+
         rid = rid + 1
 
       end
@@ -83,7 +84,6 @@ module Scraping
         p "some error was happened"
       end
     end
-    return send_data
   end
 
   def db_set_of_bulletinboard(get_data, scraping_did)
@@ -110,7 +110,6 @@ module Scraping
           end
         end
       end
-
       iizuka.save
     when 393 then
       iizuka = IizukaCall.new(url: get_data[0], title: get_data[1],  department: get_data[3], grade: get_data[4], content: get_data[5], note: get_data[6], date: get_data[7])
