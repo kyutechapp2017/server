@@ -26,10 +26,10 @@ module Scraping
   end
 
   def bulletinboard(scraping_did, latest_rid, last_rid)
-    send_data = [""]
+    send_data = []
     send_count = 0
 
-    datas = [""]
+    datas = []
     rid = latest_rid + 1
 
     begin
@@ -77,7 +77,7 @@ module Scraping
 
       end
     rescue
-      if datas == [""]
+      if datas == []
         p "finished"
 
       else
@@ -205,7 +205,7 @@ module Scraping
     i = 1
     j = 1
     finish = false
-    send_data = [""]
+    send_data = []
     send_count = 0
     while finish == false do
       begin
@@ -215,11 +215,11 @@ module Scraping
           sleep time - 5
 
           doc = Nokogiri::HTML driver.page_source.encode("UTF-8")
-          datas = [""]
+          datas = []
           count = 0
-          periods = [""]
+          periods = []
 
-          datas_1 = [""]
+          datas_1 = []
           count_1 = 0
           excep_1 = /【.*】\s{0,10}/
           doc.css('div.syllabus__information > div > div').each do |div|
@@ -228,7 +228,7 @@ module Scraping
           end
           # p datas_1
 
-          datas_2 = [""]
+          datas_2 = []
           count_2 = 0
           doc.css("p[class*=\"syllabus__section__content\"]").each do |div|
             datas_2[count_2] = div.inner_text
@@ -236,8 +236,8 @@ module Scraping
           end
           # p datas_2
 
-          datas_3 = [""]
-          temp_3 = [""]
+          datas_3 = []
+          temp_3 = []
           count_3 = 0
           count_3_2 = 0
           doc.css("td[class*=\"plan__\"]").each do |div|
@@ -289,9 +289,9 @@ module Scraping
               datas[1] = datas[1] + datas_1[i]
             elsif i == 9  # 時間割
               temp = datas_1[i].split(",")
-              array = [""]
+              array = []
               temp.each do |tmp|
-                temp_week = [""]
+                temp_week = []
                 if tmp =~ /.曜\s\d限/
                   case tmp.match(/./)[0]
                   when "月" then
@@ -327,7 +327,7 @@ module Scraping
                 end
                 array.push(temp_week)
               end
-              periods = [""]
+              periods = []
               periods.delete("")
               (1...array.length).each do |i|
                 periods.push(array[i])
