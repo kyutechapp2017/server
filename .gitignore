@@ -42,3 +42,6 @@ bower.json
 .byebug_history
 
 *.DS_Store
+
+scraping_bulletinboard.rb
+scraping_syllabus.rb
