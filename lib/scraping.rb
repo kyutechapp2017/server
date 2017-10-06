@@ -170,9 +170,6 @@ module Scraping
     else
 
     end
-    # iizuka.save
-
-    # iizuka.save
   end
 
 
@@ -220,44 +217,34 @@ module Scraping
           periods = []
 
           datas_1 = []
-          count_1 = 0
           excep_1 = /【.*】\s{0,10}/
-          doc.css('div.syllabus__information > div > div').each do |div|
-            datas_1[count_1] = div.inner_text.gsub(excep_1,"")
-            count_1 = count_1 + 1
+          doc.css('div.syllabus__information > div > div').each_with_index do |div, index|
+            datas_1[index] = div.inner_text.gsub(excep_1,"")
           end
-          # p datas_1
 
           datas_2 = []
-          count_2 = 0
-          doc.css("p[class*=\"syllabus__section__content\"]").each do |div|
-            datas_2[count_2] = div.inner_text
-            count_2 = count_2 + 1
+          doc.css("p[class*=\"syllabus__section__content\"]").each_with_index do |div, index|
+            datas_2[index] = div.inner_text
           end
-          # p datas_2
 
           datas_3 = []
           temp_3 = []
-          count_3 = 0
           count_3_2 = 0
-          doc.css("td[class*=\"plan__\"]").each do |div|
+          doc.css("td[class*=\"plan__\"]").each_with_index do |div, index|
             temp_3[count_3_2] = div.inner_text
             if count_3_2 == 2
-              datas_3[count_3] = temp_3.join("　")
-              count_3 = count_3 + 1
+              datas_3[index] = temp_3.join("　")
               count_3_2 = 0
             else
               count_3_2 = count_3_2 + 1
             end
           end
-          # p datas_3.join("\n")
 
           datas_4 = ""
           excep_4 = "授業の達成目標（学習・教育到達目標との関連）"
           doc.css("div[class*=\"row syllabus__section syllabus-section--target\"]").each do |div|
             datas_4 = div.inner_text.gsub(excep_4,"")
           end
-          # p datas_4
 
           datas[0] = campus_id
           count = count + 1

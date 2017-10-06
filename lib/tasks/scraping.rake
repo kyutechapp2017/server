@@ -13,14 +13,12 @@ namespace :scraping do
       last_rid = get_last_rid_from_bulletinboard(scraping_did)
       update_rid(scraping_did, last_rid)
       bulletinboard(scraping_did, latest_rid, last_rid)
-
     end
   end
 
   desc "scraping for syllabuses"
   task syllabuses: :environment do
     syllabus(11,2017)
-
   end
 
   desc "タスクの説明タスクの説明タスクの説明"
