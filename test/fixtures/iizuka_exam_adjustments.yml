@@ -2,18 +2,14 @@
 
 one:
   url: MyText
-  board_id: 
   title: MyString
-  subject: MyString
-  date: 2017-04-10 19:13:33
-  period: MyString
-  responsibility: MyString
+  date: 2017-10-07 00:42:21
+  time: MyString
   place_or_before: MyString
-  after: MyString
   content: MyText
   department: MyString
   grade: MyString
-  note: MyString
+  responsibility: MyString
   attachment_1: MyString
   attachment_1_url: MyText
   attachment_2: MyString
@@ -27,18 +23,14 @@ one:
 
 two:
   url: MyText
-  board_id: 
   title: MyString
-  subject: MyString
-  date: 2017-04-10 19:13:33
-  period: MyString
-  responsibility: MyString
+  date: 2017-10-07 00:42:21
+  time: MyString
   place_or_before: MyString
-  after: MyString
   content: MyText
   department: MyString
   grade: MyString
-  note: MyString
+  responsibility: MyString
   attachment_1: MyString
   attachment_1_url: MyText
   attachment_2: MyString

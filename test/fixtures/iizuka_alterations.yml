@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  title: MyString
+  subject: MyString
+  responsibility: MyString
+  department: MyString
+  grade: MyString
+  date: 2017-10-07 00:42:03
+  period: MyString
+  note: MyString
+  string: MyString
+  place_or_before: MyString
+  after: MyString
+  content: MyText
+
+two:
+  url: MyText
+  title: MyString
+  subject: MyString
+  responsibility: MyString
+  department: MyString
+  grade: MyString
+  date: 2017-10-07 00:42:03
+  period: MyString
+  note: MyString
+  string: MyString
+  place_or_before: MyString
+  after: MyString
+  content: MyText

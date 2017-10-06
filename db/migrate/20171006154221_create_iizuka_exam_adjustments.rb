@@ -1,19 +1,15 @@
-class CreateIizukaLectures < ActiveRecord::Migration[5.0]
+class CreateIizukaExamAdjustments < ActiveRecord::Migration[5.0]
   def change
-    create_table :iizuka_lectures do |t|
-      t.text :url, null: false
-      t.unsigned_integer :board_id, null: false
+    create_table :iizuka_exam_adjustments do |t|
+      t.text :url
       t.string :title
-      t.string :subject
       t.datetime :date
-      t.string :period
-      t.string :responsibility
+      t.string :time
       t.string :place_or_before
-      t.string :after
       t.text :content
       t.string :department
       t.string :grade
-      t.string :note
+      t.string :responsibility
       t.string :attachment_1
       t.text :attachment_1_url
       t.string :attachment_2
@@ -27,7 +23,7 @@ class CreateIizukaLectures < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :iizuka_lectures, :date
-    add_index :iizuka_lectures, :url, unique: true, length: 256
+    add_index :iizuka_exam_adjustments, :date
+    add_index :iizuka_exam_adjustments, :url, unique: true, length: 256
   end
 end
