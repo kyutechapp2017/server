@@ -172,6 +172,47 @@ module Scraping
     end
   end
 
+  def get_datas_1(doc)
+    datas_1 = []
+    excep_1 = /【.*】\s{0,10}/
+    doc.css('div.syllabus__information > div > div').each_with_index do |div, index|
+      datas_1[index] = div.inner_text.gsub(excep_1,"")
+    end
+    return datas_1
+  end
+
+  def get_datas_2(doc)
+    datas_2 = []
+    doc.css("p[class*=\"syllabus__section__content\"]").each_with_index do |div, index|
+      datas_2[index] = div.inner_text
+    end
+    return datas_2
+  end
+
+  def get_datas_3(doc)
+    datas_3 = []
+    temp_3 = []
+    count_3_2 = 0
+    doc.css("td[class*=\"plan__\"]").each_with_index do |div, index|
+      temp_3[count_3_2] = div.inner_text
+      if count_3_2 == 2
+        datas_3[index] = temp_3.join("　")
+        count_3_2 = 0
+      else
+        count_3_2 = count_3_2 + 1
+      end
+    end
+    return datas_3
+  end
+
+  def get_datas_4(doc)
+    datas_4 = ""
+    excep_4 = "授業の達成目標（学習・教育到達目標との関連）"
+    doc.css("div[class*=\"row syllabus__section syllabus-section--target\"]").each do |div|
+      datas_4 = div.inner_text.gsub(excep_4,"")
+    end
+    return datas_4
+  end
 
 
   def syllabus(campus_id, year)
@@ -216,35 +257,13 @@ module Scraping
           count = 0
           periods = []
 
-          datas_1 = []
-          excep_1 = /【.*】\s{0,10}/
-          doc.css('div.syllabus__information > div > div').each_with_index do |div, index|
-            datas_1[index] = div.inner_text.gsub(excep_1,"")
-          end
+          datas_1 = get_datas_1(doc)
 
-          datas_2 = []
-          doc.css("p[class*=\"syllabus__section__content\"]").each_with_index do |div, index|
-            datas_2[index] = div.inner_text
-          end
+          datas_2 = get_datas_2(doc)
 
-          datas_3 = []
-          temp_3 = []
-          count_3_2 = 0
-          doc.css("td[class*=\"plan__\"]").each_with_index do |div, index|
-            temp_3[count_3_2] = div.inner_text
-            if count_3_2 == 2
-              datas_3[index] = temp_3.join("　")
-              count_3_2 = 0
-            else
-              count_3_2 = count_3_2 + 1
-            end
-          end
+          datas_3 = get_datas_3(doc)
 
-          datas_4 = ""
-          excep_4 = "授業の達成目標（学習・教育到達目標との関連）"
-          doc.css("div[class*=\"row syllabus__section syllabus-section--target\"]").each do |div|
-            datas_4 = div.inner_text.gsub(excep_4,"")
-          end
+          datas_4 = get_datas_4(doc)
 
           datas[0] = campus_id
           count = count + 1
