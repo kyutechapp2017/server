@@ -172,7 +172,7 @@ module Scraping
     end
   end
 
-  def get_datas_1(doc)
+  def get_datas_1_from_syllabus(doc)
     datas_1 = []
     excep_1 = /【.*】\s{0,10}/
     doc.css('div.syllabus__information > div > div').each_with_index do |div, index|
@@ -181,7 +181,7 @@ module Scraping
     return datas_1
   end
 
-  def get_datas_2(doc)
+  def get_datas_2_from_syllabus(doc)
     datas_2 = []
     doc.css("p[class*=\"syllabus__section__content\"]").each_with_index do |div, index|
       datas_2[index] = div.inner_text
@@ -189,7 +189,7 @@ module Scraping
     return datas_2
   end
 
-  def get_datas_3(doc)
+  def get_datas_3_from_syllabus(doc)
     datas_3 = []
     temp_3 = []
     count_3_2 = 0
@@ -205,7 +205,7 @@ module Scraping
     return datas_3
   end
 
-  def get_datas_4(doc)
+  def get_datas_4_from_syllabus(doc)
     datas_4 = ""
     excep_4 = "授業の達成目標（学習・教育到達目標との関連）"
     doc.css("div[class*=\"row syllabus__section syllabus-section--target\"]").each do |div|
@@ -214,6 +214,64 @@ module Scraping
     return datas_4
   end
 
+  def select_term_for_syllabus(term)
+    ret = 0
+    case term
+    when "第1クォーター" then
+      ret = 1
+    when "第2クォーター" then
+      ret = 2
+    when "第3クォーター" then
+      ret = 3
+    when "第4クォーター" then
+      ret = 4
+    when "前期" then
+      ret = 5
+    when "後期" then
+      ret = 6
+    else
+      ret = 7
+    end
+    return ret
+  end
+
+  def select_week_for_syllabus(week)
+    ret = 0
+    case week
+    when "月" then
+      ret = 1
+    when "火" then
+      ret = 2
+    when "水" then
+      ret = 3
+    when "木" then
+      ret = 4
+    when "金" then
+      ret = 5
+    else
+      ret = 6
+    end
+    return ret
+  end
+
+  def select_period_for_syllabus(period)
+    ret = 0
+    case period
+    when "1" then
+      ret = 1
+    when "2" then
+      ret = 2
+    when "3" then
+      ret = 3
+    when "4" then
+      ret = 4
+    when "5" then
+      ret = 5
+    else
+      ret = 6
+    end
+    return ret
+  end
 
   def syllabus(campus_id, year)
 
@@ -257,13 +315,13 @@ module Scraping
           count = 0
           periods = []
 
-          datas_1 = get_datas_1(doc)
+          datas_1 = get_datas_1_from_syllabus(doc)
 
-          datas_2 = get_datas_2(doc)
+          datas_2 = get_datas_2_from_syllabus(doc)
 
-          datas_3 = get_datas_3(doc)
+          datas_3 = get_datas_3_from_syllabus(doc)
 
-          datas_4 = get_datas_4(doc)
+          datas_4 = get_datas_4_from_syllabus(doc)
 
           datas[0] = campus_id
           count = count + 1
@@ -274,22 +332,7 @@ module Scraping
               datas[i+3] = datas_1[i].to_i
               datas[1] = datas[1] + datas_1[i] + "&class_code="
             elsif i == 7
-              case datas_1[i]
-              when "第1クォーター" then
-                datas[i+3] = 1
-              when "第2クォーター" then
-                datas[i+3] = 2
-              when "第3クォーター" then
-                datas[i+3] = 3
-              when "第4クォーター" then
-                datas[i+3] = 4
-              when "前期" then
-                datas[i+3] = 5
-              when "後期" then
-                datas[i+3] = 6
-              else
-                datas[i+3] = 7
-              end
+              datas[i+3] = select_term_for_syllabus(datas_1[i])
             elsif i == 8
               datas[i+3] = datas_1[i]
               datas[1] = datas[1] + datas_1[i]
@@ -299,35 +342,8 @@ module Scraping
               temp.each do |tmp|
                 temp_week = []
                 if tmp =~ /.曜\s\d限/
-                  case tmp.match(/./)[0]
-                  when "月" then
-                    temp_week[0] = 1
-                  when "火" then
-                    temp_week[0] = 2
-                  when "水" then
-                    temp_week[0] = 3
-                  when "木" then
-                    temp_week[0] = 4
-                  when "金" then
-                    temp_week[0] = 5
-                  else
-                    temp_week[0] = 6
-                  end
-
-                  case tmp.match(/\d/)[0]
-                  when "1" then
-                    temp_week[1] = 1
-                  when "2" then
-                    temp_week[1] = 2
-                  when "3" then
-                    temp_week[1] = 3
-                  when "4" then
-                    temp_week[1] = 4
-                  when "5" then
-                    temp_week[1] = 5
-                  else
-                    temp_week[1] = 6
-                  end
+                  temp_week[0] = select_week_for_syllabus(tmp.match(/./)[0])
+                  temp_week[1] = select_period_for_syllabus(tmp.match(/\d/)[0])
                 else
                   temp_week = [6,6] # 変更箇所
                 end
