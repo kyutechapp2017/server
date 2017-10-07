@@ -10,53 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171007091700) do
-
-  create_table "alterations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",             limit: 65535
-    t.string   "title"
-    t.string   "subject"
-    t.string   "responsibility"
-    t.string   "department"
-    t.string   "grade"
-    t.datetime "date"
-    t.string   "period"
-    t.string   "note"
-    t.string   "string"
-    t.string   "place_or_before"
-    t.string   "after"
-    t.text     "content",         limit: 65535
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["date"], name: "index_alterations_on_date", using: :btree
-    t.index ["url"], name: "index_alterations_on_url", unique: true, length: { url: 256 }, using: :btree
-  end
-
-  create_table "exam_adjustments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",              limit: 65535
-    t.string   "title"
-    t.datetime "date"
-    t.string   "time"
-    t.string   "place_or_before"
-    t.text     "content",          limit: 65535
-    t.string   "department"
-    t.string   "grade"
-    t.string   "responsibility"
-    t.string   "attachment_1"
-    t.text     "attachment_1_url", limit: 65535
-    t.string   "attachment_2"
-    t.text     "attachment_2_url", limit: 65535
-    t.string   "attachment_3"
-    t.text     "attachment_3_url", limit: 65535
-    t.string   "attachment_4"
-    t.text     "attachment_4_url", limit: 65535
-    t.string   "attachment_5"
-    t.text     "attachment_5_url", limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.index ["date"], name: "index_exam_adjustments_on_date", using: :btree
-    t.index ["url"], name: "index_exam_adjustments_on_url", unique: true, length: { url: 256 }, using: :btree
-  end
+ActiveRecord::Schema.define(version: 20171007113228) do
 
   create_table "id_of_bulletinboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "did"
@@ -159,36 +113,6 @@ ActiveRecord::Schema.define(version: 20171007091700) do
     t.datetime "updated_at",                     null: false
     t.index ["date"], name: "index_iizuka_intensive_lectures_on_date", using: :btree
     t.index ["url"], name: "index_iizuka_intensive_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
-  end
-
-  create_table "iizuka_lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",              limit: 65535, null: false
-    t.integer  "board_id",                       null: false, unsigned: true
-    t.string   "title"
-    t.string   "subject"
-    t.datetime "date"
-    t.string   "period"
-    t.string   "responsibility"
-    t.string   "place_or_before"
-    t.string   "after"
-    t.text     "content",          limit: 65535
-    t.string   "department"
-    t.string   "grade"
-    t.string   "note"
-    t.string   "attachment_1"
-    t.text     "attachment_1_url", limit: 65535
-    t.string   "attachment_2"
-    t.text     "attachment_2_url", limit: 65535
-    t.string   "attachment_3"
-    t.text     "attachment_3_url", limit: 65535
-    t.string   "attachment_4"
-    t.text     "attachment_4_url", limit: 65535
-    t.string   "attachment_5"
-    t.text     "attachment_5_url", limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.index ["date"], name: "index_iizuka_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "iizuka_notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -332,22 +256,6 @@ ActiveRecord::Schema.define(version: 20171007091700) do
     t.datetime "updated_at",                   null: false
     t.index ["code"], name: "index_subjects_on_code", unique: true, using: :btree
     t.index ["url"], name: "index_subjects_on_url", unique: true, length: { url: 256 }, using: :btree
-  end
-
-  create_table "supplementary_lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "url",             limit: 65535
-    t.datetime "date"
-    t.string   "time"
-    t.string   "subject"
-    t.string   "responsibility"
-    t.string   "place_or_before"
-    t.string   "department"
-    t.string   "grade"
-    t.string   "note"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["date"], name: "index_supplementary_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_supplementary_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "week_periods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
