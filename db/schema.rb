@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006154221) do
+ActiveRecord::Schema.define(version: 20171007091700) do
 
   create_table "alterations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",             limit: 65535
@@ -293,10 +293,12 @@ ActiveRecord::Schema.define(version: 20171006154221) do
   end
 
   create_table "intermediates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "subject_id",                  unsigned: true
-    t.integer  "week_period_id",              unsigned: true
+    t.integer  "subject_id"
+    t.integer  "week_period_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["subject_id"], name: "index_intermediates_on_subject_id", using: :btree
+    t.index ["week_period_id"], name: "index_intermediates_on_week_period_id", using: :btree
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -355,4 +357,6 @@ ActiveRecord::Schema.define(version: 20171006154221) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "intermediates", "subjects"
+  add_foreign_key "intermediates", "week_periods"
 end
