@@ -336,7 +336,7 @@ module Scraping
             elsif i == 8
               datas[i+3] = datas_1[i]
               datas[1] = datas[1] + datas_1[i]
-            elsif i == 9  # 時間割
+            elsif i == 9
               temp = datas_1[i].split(",")
               array = []
               temp.each do |tmp|
@@ -345,15 +345,11 @@ module Scraping
                   temp_week[0] = select_week_for_syllabus(tmp.match(/./)[0])
                   temp_week[1] = select_period_for_syllabus(tmp.match(/\d/)[0])
                 else
-                  temp_week = [6,6] # 変更箇所
+                  temp_week = [6,6]
                 end
-                # binding.pry
                 array << temp_week
               end
-              # periods = []
-              # periods.delete("")
               (0...array.length).each do |i|
-                # binding.pry
                 periods << array[i]
               end
             elsif i == 10
@@ -412,32 +408,7 @@ module Scraping
       # ここがうまくいかない
       subjects.save
     end
-    # if subjects.new_record? # 新規作成の場合は保存
-      # wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
-      # subjects.week_periods << wp
-      # subjects.save!
-    # end
-    # if Subject.find_by(url: gdata[1], updated: gdata[13]) == nil
-    #
-    #   subjects = Subject.new(campus_id: gdata[0], url: gdata[1], year: gdata[2], name: gdata[3], code: gdata[4], teacher: gdata[5], department: gdata[6], classification: gdata[7], num_of_unit: gdata[8], grade: gdata[9], term: gdata[10], number: gdata[11], place: gdata[12], updated: gdata[13], outline: gdata[14], placement: gdata[15], item: gdata[16], procedure: gdata[17], goal: gdata[18], criteria: gdata[19], preparation: gdata[20], keyword: gdata[21], textbook: gdata[22], reference: gdata[23], note: gdata[24], email: gdata[25])
-    #   binding.pry
-    #
-    #   # ここがまずい
-    #   subjects.save
-    #
-    #   binding.pry
-    #   # linkage = Subject.maximum(:id)
-    #   # link_id = linkage.id
-    #
-    #   # ここがまずい?
-    #   link_id  = Subject.maximum(:id)
-    #   p periods
-    #   periods.each do |k|
-    #     binding.pry
-    #     wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
-    #     intmed = Intermediate.new(subject_id: link_id, week_period_id: wp.id)
-    #     intmed.save
-    #   end
+
   end
 
 end
