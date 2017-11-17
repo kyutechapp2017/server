@@ -164,6 +164,7 @@ module Scraping
           end
         end
       end
+      iizuka.board_id = 1
       iizuka.save
     when 367 then
       iizuka = IizukaScholarship.new(url: get_data[0], title: get_data[1],  note: get_data[2], date: get_data[3], content: get_data[4])
@@ -240,6 +241,7 @@ module Scraping
           end
         end
       end
+      iizuka.board_id = 2
       iizuka.save
     when 370 then
       iizuka = IizukaOther.new(url: get_data[0], title: get_data[1],  content: get_data[2], note: get_data[3])
@@ -263,6 +265,7 @@ module Scraping
           end
         end
       end
+      iizuka.board_id = 3
       iizuka.save
     else
 
