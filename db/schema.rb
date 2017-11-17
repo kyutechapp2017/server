@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117105147) do
+ActiveRecord::Schema.define(version: 20171117144043) do
 
   create_table "id_of_bulletinboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "did"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(version: 20171117105147) do
     t.text     "email",          limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["updated"], name: "index_subjects_on_updated", using: :btree
     t.index ["url"], name: "index_subjects_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
