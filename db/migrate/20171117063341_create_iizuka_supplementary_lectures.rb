@@ -3,7 +3,7 @@ class CreateIizukaSupplementaryLectures < ActiveRecord::Migration[5.0]
     create_table :iizuka_supplementary_lectures do |t|
       t.text :url
       t.datetime :date
-      t.string :time
+      t.string :peirod
       t.string :subject
       t.string :responsibility
       t.string :place_or_before

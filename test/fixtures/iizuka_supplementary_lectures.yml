@@ -2,8 +2,8 @@
 
 one:
   url: MyText
-  date: 2017-10-07 00:42:12
-  time: MyString
+  date: 2017-11-17 15:33:41
+  peirod: MyString
   subject: MyString
   responsibility: MyString
   place_or_before: MyString
@@ -13,8 +13,8 @@ one:
 
 two:
   url: MyText
-  date: 2017-10-07 00:42:12
-  time: MyString
+  date: 2017-11-17 15:33:41
+  peirod: MyString
   subject: MyString
   responsibility: MyString
   place_or_before: MyString
