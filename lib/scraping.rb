@@ -46,16 +46,12 @@ module Scraping
 
         datas = [url_head + url_tail]
         count = 1
-        # date_find = /([0-9０-９]{1,4})[\/\-\.\／－．年]{1}([0-9０-９]{1,2})[\/\-\.\／－．月]{1}([0-9０-９]{1,2})[\/\-\.\／－．日]?$/iu
         date_find = /^\d{4}年\d{1,2}月\d{1,2}日$/
 
         url_find = /db.cgi.+/
         regexp = /<(a href=\")|(">.*)/
 
         doc.css(place).each do |td|
-          # if scraping_did == 361
-          #   binding.pry
-          # end
           datas[count] = td.inner_text.gsub(/　|\r/,"")
           if datas[count] =~ date_find
             date_material = datas[count].scan(/\d{1,4}/)
@@ -119,11 +115,9 @@ module Scraping
       iizuka = IizukaAlteration.new(url: get_data[0], title: get_data[1],  subject: get_data[2], responsibility: get_data[3], department: get_data[4], grade: get_data[5], date: get_data[6], period: get_data[7], note: get_data[8], place_or_before: get_data[9], after: get_data[10], content: get_data[11])
       iizuka.save
     when 361 then
-      # binding.pry
       iizuka = IizukaCancellation.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
       iizuka.save
     when 363 then
-      # binding.pry
       iizuka = IizukaSupplementaryClass.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
       iizuka.save
     when 393 then
@@ -153,19 +147,19 @@ module Scraping
       end
       iizuka.save
     when 373 then
-      iizuka = IizukaOther.new(url: get_data[0], title: get_data[1],  responsibility: get_data[3], content: get_data[4], note: get_data[5], date: get_data[6])
-      if get_data[7] != nil
-        iizuka.attachment_1 = get_data[7]
-        iizuka.attachment_1_url = get_data[8]
-        if get_data[9] != nil
-          iizuka.attachment_2 = get_data[9]
-          iizuka.attachment_2_url = get_data[10]
-          if get_data[11] != nil
-            iizuka.attachment_3 = get_data[11]
-            iizuka.attachment_3_url = get_data[12]
-            if get_data[13] != nil
-              iizuka.attachment_4 = get_data[13]
-              iizuka.attachment_4_url = get_data[14]
+      iizuka = IizukaOther.new(url: get_data[0], title: get_data[1],  responsibility: get_data[2], content: get_data[3], note: get_data[4], date: get_data[5])
+      if get_data[6] != nil
+        iizuka.attachment_1 = get_data[6]
+        iizuka.attachment_1_url = get_data[7]
+        if get_data[8] != nil
+          iizuka.attachment_2 = get_data[8]
+          iizuka.attachment_2_url = get_data[9]
+          if get_data[10] != nil
+            iizuka.attachment_3 = get_data[10]
+            iizuka.attachment_3_url = get_data[11]
+            if get_data[12] != nil
+              iizuka.attachment_4 = get_data[12]
+              iizuka.attachment_4_url = get_data[13]
             end
           end
         end
