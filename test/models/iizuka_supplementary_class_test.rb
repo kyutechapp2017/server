@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class IizukaSupplementaryLectureTest < ActiveSupport::TestCase
+class IizukaSupplementaryClassTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

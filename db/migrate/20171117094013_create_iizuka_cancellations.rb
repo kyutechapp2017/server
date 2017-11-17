@@ -1,6 +1,6 @@
-class CreateIizukaSupplementaryLectures < ActiveRecord::Migration[5.0]
+class CreateIizukaCancellations < ActiveRecord::Migration[5.0]
   def change
-    create_table :iizuka_supplementary_lectures do |t|
+    create_table :iizuka_cancellations do |t|
       t.text :url
       t.datetime :date
       t.string :peirod
@@ -13,7 +13,7 @@ class CreateIizukaSupplementaryLectures < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :iizuka_supplementary_lectures, :date
-    add_index :iizuka_supplementary_lectures, :url, unique: true, length: 256
+    add_index :iizuka_cancellations, :date
+    add_index :iizuka_cancellations, :url, unique: true, length: 256
   end
 end

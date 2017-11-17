@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  date: 2017-11-17 18:37:35
+  peirod: MyString
+  subject: MyString
+  responsibility: MyString
+  place_or_before: MyString
+  department: MyString
+  grade: MyString
+  note: MyString
+
+two:
+  url: MyText
+  date: 2017-11-17 18:37:35
+  peirod: MyString
+  subject: MyString
+  responsibility: MyString
+  place_or_before: MyString
+  department: MyString
+  grade: MyString
+  note: MyString

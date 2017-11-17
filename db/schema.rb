@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117063341) do
+ActiveRecord::Schema.define(version: 20171117094405) do
 
   create_table "id_of_bulletinboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "did"
@@ -53,11 +53,27 @@ ActiveRecord::Schema.define(version: 20171117063341) do
     t.index ["url"], name: "index_iizuka_calls_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
+  create_table "iizuka_cancellations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "url",             limit: 65535
+    t.datetime "date"
+    t.string   "peirod"
+    t.string   "subject"
+    t.string   "responsibility"
+    t.string   "place_or_before"
+    t.string   "department"
+    t.string   "grade"
+    t.string   "note"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["date"], name: "index_iizuka_cancellations_on_date", using: :btree
+    t.index ["url"], name: "index_iizuka_cancellations_on_url", unique: true, length: { url: 256 }, using: :btree
+  end
+
   create_table "iizuka_exam_adjustments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",              limit: 65535
     t.string   "title"
     t.datetime "date"
-    t.string   "time"
+    t.string   "period"
     t.string   "place_or_before"
     t.text     "content",          limit: 65535
     t.string   "department"
@@ -200,7 +216,7 @@ ActiveRecord::Schema.define(version: 20171117063341) do
     t.index ["url"], name: "index_iizuka_studying_abroads_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
-  create_table "iizuka_supplementary_lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "iizuka_supplementary_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",             limit: 65535
     t.datetime "date"
     t.string   "peirod"
@@ -212,8 +228,8 @@ ActiveRecord::Schema.define(version: 20171117063341) do
     t.string   "note"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["date"], name: "index_iizuka_supplementary_lectures_on_date", using: :btree
-    t.index ["url"], name: "index_iizuka_supplementary_lectures_on_url", unique: true, length: { url: 256 }, using: :btree
+    t.index ["date"], name: "index_iizuka_supplementary_classes_on_date", using: :btree
+    t.index ["url"], name: "index_iizuka_supplementary_classes_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
   create_table "intermediates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

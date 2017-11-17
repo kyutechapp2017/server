@@ -4,7 +4,7 @@ class CreateIizukaExamAdjustments < ActiveRecord::Migration[5.0]
       t.text :url
       t.string :title
       t.datetime :date
-      t.string :time
+      t.string :period
       t.string :place_or_before
       t.text :content
       t.string :department
