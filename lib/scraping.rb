@@ -498,14 +498,11 @@ module Scraping
   def db_set_of_syllabus(gdata, periods)
     subjects = Subject.find_or_initialize_by(campus_id: gdata[0], url: gdata[1], year: gdata[2], name: gdata[3], code: gdata[4], teacher: gdata[5], department: gdata[6], classification: gdata[7], num_of_unit: gdata[8], grade: gdata[9], term: gdata[10], number: gdata[11], place: gdata[12], updated: gdata[13], outline: gdata[14], placement: gdata[15], item: gdata[16], procedure: gdata[17], goal: gdata[18], criteria: gdata[19], preparation: gdata[20], keyword: gdata[21], textbook: gdata[22], reference: gdata[23], note: gdata[24], email: gdata[25])
 
-    binding.pry
     if subjects.new_record?
       periods.each do |k|
-        binding.pry
         wp = WeekPeriod.find_by(week_num: k[0], period_num: k[1])
         subjects.week_periods << wp
       end
-      # ここがうまくいかない
       subjects.save
     end
 

@@ -270,7 +270,6 @@ ActiveRecord::Schema.define(version: 20171117105147) do
     t.text     "email",          limit: 65535
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.index ["code"], name: "index_subjects_on_code", unique: true, using: :btree
     t.index ["url"], name: "index_subjects_on_url", unique: true, length: { url: 256 }, using: :btree
   end
 
