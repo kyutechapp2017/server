@@ -3,7 +3,7 @@ class CreateIizukaCancellations < ActiveRecord::Migration[5.0]
     create_table :iizuka_cancellations do |t|
       t.text :url
       t.datetime :date
-      t.string :peirod
+      t.string :period
       t.string :subject
       t.string :responsibility
       t.string :place_or_before

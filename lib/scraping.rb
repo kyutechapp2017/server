@@ -119,10 +119,12 @@ module Scraping
       iizuka = IizukaAlteration.new(url: get_data[0], title: get_data[1],  subject: get_data[2], responsibility: get_data[3], department: get_data[4], grade: get_data[5], date: get_data[6], period: get_data[7], note: get_data[8], place_or_before: get_data[9], after: get_data[10], content: get_data[11])
       iizuka.save
     when 361 then
-      iizuka = IizukaSupplementaryLecture.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
+      # binding.pry
+      iizuka = IizukaCancellation.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
       iizuka.save
     when 363 then
-      iizuka = IizukaSupplementaryLecture.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
+      # binding.pry
+      iizuka = IizukaSupplementaryClass.new(url: get_data[0], date: get_data[1],  period: get_data[2], subject: get_data[3], responsibility: get_data[4], place_or_before: get_data[5], department: get_data[6], grade: get_data[7], note: get_data[8])
       iizuka.save
     when 393 then
       iizuka = IizukaCall.new(url: get_data[0], title: get_data[1],  department: get_data[3], grade: get_data[4], content: get_data[5], note: get_data[6], date: get_data[7])

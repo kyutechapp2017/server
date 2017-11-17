@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117094405) do
+ActiveRecord::Schema.define(version: 20171117105147) do
 
   create_table "id_of_bulletinboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "did"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171117094405) do
   create_table "iizuka_cancellations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",             limit: 65535
     t.datetime "date"
-    t.string   "peirod"
+    t.string   "period"
     t.string   "subject"
     t.string   "responsibility"
     t.string   "place_or_before"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20171117094405) do
   create_table "iizuka_supplementary_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "url",             limit: 65535
     t.datetime "date"
-    t.string   "peirod"
+    t.string   "period"
     t.string   "subject"
     t.string   "responsibility"
     t.string   "place_or_before"
