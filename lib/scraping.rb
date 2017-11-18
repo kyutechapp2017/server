@@ -49,7 +49,7 @@ module Scraping
         count = 1
         date_find = /^\d{4}年\d{1,2}月\d{1,2}日$/
 
-        url_find = /db.cgi.+/
+        url_find = /db.cgi.+fid.+/
         regexp = /<(a href=\")|(">.*)/
 
         doc.css(place).each do |td|
