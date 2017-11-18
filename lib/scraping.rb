@@ -3,6 +3,7 @@ require "nokogiri"
 require 'date'
 require 'kconv'
 require 'open-uri'
+require 'twitter'
 
 module Scraping
   def get_ids_for_bulletinboard
@@ -70,6 +71,9 @@ module Scraping
         end
 
         get_data = datas
+
+        notice_updated_bulletinboard(get_data, scraping_did)
+        sleep 15
 
         db_set_of_bulletinboard(get_data, scraping_did)
 
@@ -269,6 +273,69 @@ module Scraping
       iizuka.save
     else
 
+    end
+  end
+
+  def notice_updated_bulletinboard(get_data, scraping_did)
+    begin
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key = Rails.application.secrets.consumer_key
+        config.consumer_secret = Rails.application.secrets.consumer_secret
+        config.access_token = Rails.application.secrets.access_token
+        config.access_token_secret = Rails.application.secrets.access_token_secret
+      end
+
+      client.update("【#{name_in_bulletinboard(scraping_did)}】#{send_twitter_new(get_data, scraping_did)} #{get_data[0]}")
+    rescue
+      p "Something was happened in #{scraping_did}"
+    end
+  end
+
+  def name_in_bulletinboard(did)
+    case did
+    when 357 then
+      return "お知らせ（学生向け）"
+    when 391 then
+      return "時間割・講義室変更"
+    when 361 then
+      return "休講通知"
+    when 363 then
+      return "補講通知"
+    when 393 then
+      return "学生呼出"
+    when 364 then
+      return "授業調整・期末試験"
+    when 373 then
+      return "各種手続き"
+    when 367 then
+      return "奨学金"
+    when 379 then
+      return "集中講義"
+    when 372 then
+      return "留学・国際関連"
+    when 368 then
+      return "学部生情報"
+    when 370 then
+      return "大学院生情報"
+    else
+      p "Error in rid"
+    end
+  end
+
+  def send_twitter_new(get_data, scraping_did)
+    case scraping_did
+    when 357 then
+      return "＜#{get_data[6]}＞#{get_data[1]}"
+    when 391 then
+      return "＜#{get_data[4]}＞#{get_data[2]}"
+    when 361 then
+      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].to_s} #{get_data[2]}"
+    when 363 then
+      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].to_s} #{get_data[2]}"
+    when 393 then
+      return "＜#{get_data[3]}＞#{get_data[4]}"
+    else
+      return "#{get_data[1]}"
     end
   end
 
