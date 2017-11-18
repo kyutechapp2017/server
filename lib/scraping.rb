@@ -294,7 +294,7 @@ module Scraping
   def name_in_bulletinboard(did)
     case did
     when 357 then
-      return "お知らせ（学生向け）"
+      return "お知らせ"
     when 391 then
       return "時間割・講義室変更"
     when 361 then
@@ -329,13 +329,32 @@ module Scraping
     when 391 then
       return "＜#{get_data[4]}＞#{get_data[2]}"
     when 361 then
-      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].to_s} #{get_data[2]}"
+      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].strftime("%m/%d")}(" + days(get_data[1].strftime("%a")) + ") #{get_data[2]}"
     when 363 then
-      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].to_s} #{get_data[2]}"
+      return "＜#{get_data[6]}＞#{get_data[3]} #{get_data[1].strftime("%m/%d")}(" + days(get_data[1].strftime("%a")) + ") #{get_data[2]}"
     when 393 then
       return "＜#{get_data[3]}＞#{get_data[4]}"
     else
       return "#{get_data[1]}"
+    end
+  end
+
+  def days(str)
+    case str
+    when "Mon" then
+      return "月"
+    when "Tue" then
+      return "火"
+    when "Wed" then
+      return "水"
+    when "Thu" then
+      return "木"
+    when "Fri" then
+      return "金"
+    when "Sat" then
+      return "土"
+    when "Sun" then
+      return "日"
     end
   end
 
